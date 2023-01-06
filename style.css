@@ -88,8 +88,15 @@ aside {
     flex: 1;
 }
 
-#store button, #map-aside button {
+#map-aside button {
     color: #000;
+    min-width: 100%;
+    text-align: center;
+    text-shadow: none;
+}
+#store button{
+    color: #000;
+    height: 100px;
     min-width: 100%;
     text-align: center;
     text-shadow: none;
@@ -184,28 +191,64 @@ button {
 
 .gun {
     background-color: rgb(249, 191, 59);
+    transition: background-color .9s;
+}
+.tower-button img{
+    position: relative;
+    top: -15px;
+    height: 50px;
+}
+
+.tower-button{
+    min-height: 60px;
+    padding: 27.5% 0;
+}
+.tower-button:hover img{
+
+    display: none;
+    align-items: center;
+}
+.tower-button p{
+    visibility: hidden;
+}
+.tower-button:hover p{
+    visibility: visible;
+}
+.tower-button:hover{
+    background-color: aquamarine;
 }
 
 .laser {
     background-color: rgb(25, 181, 254);
+    transition: background-color .9s;
 }
 
 .slow {
     background-color: rgb(68, 108, 179);
+    transition: background-color .9s;
 }
 
 .sniper {
     background-color: rgb(207, 0, 15);
+    transition: background-color .9s;
 }
 
 .rocket {
     background-color: rgb(30, 130, 76);
+    transition: background-color .9s;
 }
 
 .bomb {
     background-color: rgb(102, 51, 153);
+    transition: background-color .9s;
 }
 
 .tesla {
     background-color: rgb(255, 255, 0);
+    transition: background-color .9s;
+}
+
+.commander {
+    background-color: rgb(15, 27, 99);
+    transition: background-color .9s;
 }

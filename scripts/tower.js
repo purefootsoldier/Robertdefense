@@ -93,7 +93,12 @@ class Tower {
 
     // Returns average cooldown in seconds
     getCooldown() {
+        /*if (inCommanderRadious){
+            return (this.cooldownMin + this.cooldownMax) / (120 * commanderFactor);
+        }
+        else{*/
         return (this.cooldownMin + this.cooldownMax) / 120;
+        
     }
 
     kill() {

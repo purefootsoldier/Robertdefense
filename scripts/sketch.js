@@ -373,7 +373,9 @@ function loadMap() {
 // Load all sounds
 function loadSounds() {
     sounds = {};
-    
+    //commander CTA
+    sounds.callTA = loadSound('sounds/CTA.wav');
+    sounds.callTA.setVolume(0.3);
     // Missile explosion
     sounds.boom = loadSound('sounds/boom.wav');
     sounds.boom.setVolume(0.3);
@@ -490,8 +492,12 @@ function randomWave() {
     var waves = [];
 
     if (isWave(0, 3)) {
-        waves.push([40, ['weak', 50]]);
+        waves.push([40, ['weak',"tank","medic",50]]);
     }
+
+    /*if (isWave(0, 3)) {
+        waves.push([40, ['weak', 50]]);
+    }*/
     if (isWave(2, 4)) {
         waves.push([20, ['weak', 25]]);
     }
@@ -893,7 +899,11 @@ function draw() {
 
         // Target enemies and update cooldowns
         if (!paused) {
-            t.target(enemies);
+            /*if (tower == ){
+                t.target(towers);   
+               }
+               else{*/
+                 t.target(enemies)    
             t.update();
         }
 
@@ -1061,6 +1071,10 @@ function keyPressed() {
         case 55:
             // 7
             setPlace('tesla');
+            break;
+        case 56:
+            // 7
+            setPlace('commander');
             break;
         case 70:
             // F

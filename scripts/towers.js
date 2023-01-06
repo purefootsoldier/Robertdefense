@@ -606,3 +606,80 @@ tower.tesla = {
         }
     ]
 };
+
+tower.commander = {
+    // Display
+    baseOnTop: false,
+    color: [255, 0, 0],
+    drawLine: false,
+    length: 1.1,
+    radius: 0.9,
+    secondary: [128, 128, 128],
+    width: 0.3,
+    // Misc
+    name: 'commander',
+    sound: "commanderCta",
+    title: 'Commander Tower',
+    // Stats
+    cooldownMax: 0,
+    cooldownMin: 0,
+    cost: 200,
+    damageMax: 0,
+    damageMin: 0,
+    range: 3,
+    type: 'command',
+    // Methods
+    drawBarrel: function() {
+        stroke(this.border);
+        fill(this.secondary);
+        var back = -this.length * ts / 2;
+        var side = this.width * ts / 2;
+        rect(back, -side, this.length * ts, this.width * ts);
+    },
+    onAim: function(e) {
+        this.attack(e);
+    },
+    onHit: function(e) {
+        e.applyEffect('slow', 40);
+    },
+    // Target correct enemy
+    target: function(entities) {
+        if (stopFiring) return;
+        entities = this.visible(entities);
+        if (entities.length === 0) return;
+        if (!this.canFire()) return;
+        this.resetCooldown();
+        noStroke();
+        fill(this.color[0], this.color[1], this.color[2], 127);
+        var r = this.range * 2 + 1;
+        ellipse(this.pos.x, this.pos.y, r * ts, r * ts);
+        for (var i = 0; i < entities.length; i++) {
+            this.onAim(entities[i]);
+        }
+    },
+    update() {
+        this.angle += PI / 60;
+        if (this.cd > 0) this.cd--;
+    },
+    // Upgrades
+    upgrades: [
+        {
+            // Display
+            color: [102, 204, 26],
+            radius: 0.9,
+            // Misc
+            name: 'CallToArms',
+            title: 'EliteCommander',
+            // Stats
+            cooldownMax: 0,
+            cooldownMin: 0,
+            cost: 350,
+            range: 5,
+            type: 'UCommand',
+            // Methods
+            onHit: function(e) {
+                e.applyEffect('Ucommand', 60);
+            }
+        }
+    ]
+};

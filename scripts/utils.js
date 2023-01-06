@@ -1,6 +1,5 @@
 new p5();   // p5.js global mode
 
-
 // Check if approximately at tile center
 function atTileCenter(x, y, col, row) {
     var c = center(col, row);
